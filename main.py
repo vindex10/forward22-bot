@@ -39,6 +39,7 @@ def comments_callback(update, context):
     while key not in FORWARD_CACHE:
         time.sleep(1)
     text = f"shared by {FORWARD_CACHE[key]}"
+    del FORWARD_CACHE[key]
     context.bot.send_message(chat_id=comments_chat, text=text, reply_to_message_id=update.message.message_id)
 
 
