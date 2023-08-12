@@ -2,6 +2,7 @@ import os
 import json
 import logging
 from telegram.ext import ApplicationBuilder, MessageHandler, filters
+from config import CFG
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -10,8 +11,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 class Forward22Bot:
     def __init__(self):
-        self.forward_mapping = json.loads(os.environ["FORWARD_MAPPING"])
-        bot_token = os.environ["BOT_TOKEN"]
+        self.forward_mapping = CFG.forward_mapping
+        bot_token = CFG.bot_token
         self.app = ApplicationBuilder().token(bot_token).build()
         self.init_handlers()
 
